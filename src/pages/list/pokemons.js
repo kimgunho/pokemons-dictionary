@@ -5,6 +5,7 @@ import { UseUserPokemons } from '../../context/pokemonContext'
 const Item = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  margin-top: 70px;
 `
 
 const ItemEl = styled.li`
@@ -53,8 +54,20 @@ const Btn = styled.button`
 
 function Pokemons({ item, end, more }) {
   const { setSelectPokemon } = UseUserPokemons()
+  const detail = document.querySelector('.detail')
+
   const handleSelectPokemon = (pokemon) => {
+    rotateDetail()
     setSelectPokemon(pokemon)
+    if (detail.classList.contains('rotateY')) {
+      setTimeout(() => {
+        detail.classList.remove('rotateY')
+      }, 700)
+    }
+  }
+
+  function rotateDetail() {
+    detail.classList.add('rotateY')
   }
 
   return (
@@ -78,7 +91,8 @@ function Pokemons({ item, end, more }) {
           </ItemEl>
         ))}
       </Item>
-      <Btn ref={end} onClick={more}>
+
+      <Btn ref={end} onClick={more} className="more">
         more
       </Btn>
     </>

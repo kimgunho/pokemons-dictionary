@@ -38,6 +38,20 @@ const FixDiv = styled.div`
       }
     }
   }
+  div.rotateY {
+    @keyframes rotateY {
+      0% {
+        transform: rotateY(0deg);
+      }
+      50% {
+        transform: rotateY(90deg);
+      }
+      100% {
+        transform: rotateY(0deg);
+      }
+    }
+    animation: rotateY 0.2s ease-in;
+  }
 `
 const CircleImg = styled.img`
   @keyframes imgBackground {
@@ -51,7 +65,7 @@ const CircleImg = styled.img`
       background-position: 0% 50%;
     }
   }
-  /* background: linear-gradient(137deg, #fff6b7, #f77c99, #6578f2, #c2ffd8); */
+
   background: linear-gradient(
     137deg,
     #fff6b7,
@@ -75,13 +89,36 @@ const LikeBtn = styled.button`
 `
 
 function Detail() {
-  const { selectedPokemon } = UseUserPokemons()
+  const { selectedPokemon, collectPokemons, setCollectPokemons } =
+    UseUserPokemons()
+
+  function handleCollectPokemons(item) {
+    const selectPokemon = collectPokemons.find(({ name }) => item.name === name)
+    // // more.style.display = 'none'
+
+    if (!selectPokemon) {
+      setCollectPokemons((acc) => [...acc, item])
+    } else {
+      const filterPokemons = collectPokemons.filter(
+        ({ name }) => name !== item.name,
+      )
+      setCollectPokemons(filterPokemons)
+    }
+  }
 
   window.addEventListener('scroll', function () {
     const fixDiv = document.querySelector('.detail')
     const top = window.scrollY
     fixDiv.style.top = `${top}px`
   })
+
+  function likeText() {
+    const filterName = collectPokemons.find(
+      ({ name }) => name === selectedPokemon.name,
+    )
+
+    return !filterName ? '❤️' : '💔'
+  }
 
   const { color, id, name, img, type, text, genera, height, weight } =
     selectedPokemon
@@ -90,7 +127,13 @@ function Detail() {
       <div className="detail">
         <h2>
           <span>{id ? `no.${id}` : ''}</span> {name}
-          {id ? <LikeBtn>❤️</LikeBtn> : ``}
+          {id ? (
+            <LikeBtn onClick={() => handleCollectPokemons(selectedPokemon)}>
+              {likeText()}
+            </LikeBtn>
+          ) : (
+            ``
+          )}
         </h2>
         <p className="type">{type ? `type : ${type}` : ``}</p>
         <CircleImg bgColor={color} src={img} alt={name} />

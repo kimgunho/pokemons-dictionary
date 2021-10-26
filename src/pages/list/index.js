@@ -6,9 +6,8 @@ import Skeleton from './Skeleton'
 import { UseUserPokemons } from '../../context/pokemonContext'
 
 function List() {
-  const { pokemons, setPokemons } = UseUserPokemons()
+  const { pokemons, setPokemons, count, setCount } = UseUserPokemons()
   const [isLoading, setIsLoading] = useState(true)
-  const [count, setCount] = useState(9)
 
   const fetchPokemons = async (count) => {
     const res = await fetch(

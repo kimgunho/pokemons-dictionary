@@ -4,6 +4,7 @@ import styled from 'styled-components'
 const SkeletonUl = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  padding-top: 70px;
 `
 
 const ItemEl = styled.li`

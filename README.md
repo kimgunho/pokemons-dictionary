@@ -4,7 +4,7 @@
 
 ## issue
 - [X] 포켓몬 api를 이용하여 데이터 재정리
-- [ ] 포켓몬 리스트 선택시 디테일 렌더링
+- [X] 포켓몬 리스트 선택시 디테일 렌더링
 - [ ] 좋아하는 포켓몬 찜기능
 - [ ] 검색기능
 
@@ -31,24 +31,25 @@
 <img src="./Kapture.gif"  width="320">
 <br>
 **문제점&방안** : fetch된 코드만 따로 파일로 만들어서 사용을 하고싶었으나 hook err로 잘 되지를 않았다. 이부분은 다시 손을 볼 예정이다. <br>
-** use ** : skeleton ui, observer infinity scroll, styled components<br>
 <hr>
 
 ### 3. 선택된 포켓몬데이터 디테일 전달
-**기획** : <br>
-**문제점&방안** : <br>
-**사용된 스킬** : <br>
+**기획** : 선택된 포켓몬의 정보를 context의 selectPokemon state에 넘겨주어 해당 데이터를 바로 디테일 페이지에 렌더링 하였습니다.
+<br>
+<img src="./detail.gif"  width="320">
 <hr>
 
 ### 4. 찜하기 기능과 선택받은 포켓몬리스트 리렌더링
 **기획** : <br>
 **문제점&방안** : <br>
-**사용된 스킬** : <br>
 <hr>
 
 ### 5. 검색기능
 **기획** : <br>
 **문제점&방안** : <br>
-**사용된 스킬** : <br>
+
+## 회고록
+
+**프로젝트를 통하여 배운부분** : skeleton ui, observer infinity scroll, styled components<br>
 
 

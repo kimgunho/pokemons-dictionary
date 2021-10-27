@@ -1,6 +1,7 @@
 import React from 'react'
 import Like from './like'
 import styled from 'styled-components'
+import { UseUserPokemons } from '../../context/pokemonContext'
 
 const SearchForm = styled.form`
   display: flex;
@@ -30,16 +31,62 @@ const SearchAticle = styled.div`
     cursor: pointer;
   }
 `
+const Modal = styled.div`
+  position: fixed;
+  width: auto;
+  height: auto;
+  padding: 30px 50px;
+  background-color: crimson;
+  color: #fff;
+  left: 50%;
+  top: 50%;
+  display: none;
+  transform: translate(-50%, -50%);
+  font-size: 1.25em;
+`
 
 function Search() {
+  const { pokemons, setPokemons, setCount } = UseUserPokemons()
+  const more = document.querySelector('.more')
+  const searchId = document.getElementById('search-id')
+  const modalAlert = document.querySelector('.modal-alert')
+
+  async function onSearch(e) {
+    e.preventDefault()
+    const searchPokemon = pokemons.filter(({ name }) => name === searchId.value)
+    if (searchPokemon) {
+      setPokemons(searchPokemon)
+      more.style.display = 'none'
+    }
+    if (searchPokemon.length === 0) {
+      modalAlert.style.display = 'block'
+    }
+  }
+
+  function onPokemonReset(e) {
+    const {
+      target: { value },
+    } = e
+    if (value === '') {
+      modalAlert.style.display = 'none'
+      more.style.display = 'block'
+      setCount(9)
+    }
+  }
+
   return (
-    <SearchForm>
-      <SearchAticle className="search-article">
-        <input type="tetx"></input>
-        <button>검색</button>
-      </SearchAticle>
-      <Like />
-    </SearchForm>
+    <>
+      <SearchForm>
+        <SearchAticle className="search-article">
+          <input onChange={onPokemonReset} id="search-id" type="text"></input>
+          <button onClick={onSearch}>검색</button>
+        </SearchAticle>
+        <Like />
+      </SearchForm>
+      <Modal className="modal-alert">
+        <p>검색하신 결과는 존재하지 않습니다 :(</p>
+      </Modal>
+    </>
   )
 }
 

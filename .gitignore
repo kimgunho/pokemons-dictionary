@@ -2,3 +2,7 @@ node_modules
 dist
 .eslintrc
 .prettierrc
+index.psd
+detail.gif
+Kapture.gif
+like.gif

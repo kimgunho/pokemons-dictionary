@@ -22,6 +22,7 @@ const ItemEl = styled.li`
   h3 {
     color: #333;
     padding: 10px 0;
+    white-space: nowrap;
   }
   img {
     width: 100%;

@@ -1,6 +1,7 @@
 # 포켓몬 도감 - functionaly Component
-<P>React를 이용하여 포켓몬 도감을 만들어보자</p>
+<P>React를 이용하여 포켓몬 도감을 만들어보자 [적응형웹]</p>
 
+link : https://kimgunho.github.io/pokemons-dictionary/build/index.html
 
 ## issue
 - [X] 포켓몬 api를 이용하여 데이터 재정리

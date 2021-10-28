@@ -22,7 +22,6 @@
     "lint": "eslint .",
     "lintFix": "eslint . --fix",
     "prettier": "prettier .",
-    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"    
   },
   "eslintConfig": {
@@ -53,6 +52,5 @@
     "eslint-plugin-promise": "^5.1.1",
     "eslint-plugin-standard": "^5.0.0",
     "prettier": "^2.4.1"
-  },
-  "homepage" : "https://kimgunho.github.io/pokemons-dictionary/"
+  }
 }

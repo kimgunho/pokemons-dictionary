@@ -23,7 +23,7 @@ const SearchAticle = styled.div`
   }
   button {
     width: 30%;
-    background-color: #2f9626;
+    background-color: #333;
     color: #fff;
     border: 0;
     padding: 10px 20px;

@@ -59,7 +59,7 @@ function List() {
             loadMore()
           }
         },
-        { threshold: 1 },
+        { threshold: 0.2 },
       )
       observer.observe(conutEnd.current)
     }

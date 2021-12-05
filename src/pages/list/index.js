@@ -42,12 +42,12 @@ function List() {
   }
 
   const loadMore = () => {
-    setCount((acc) => acc + 9)
+    setCount((prev) => prev + 9)
   }
 
   useEffect(() => fetchPokemons(count), [count])
 
-  const conutEnd = useRef()
+  const scrollEnd = useRef()
   useEffect(() => {
     if (!isLoading) {
       const observer = new IntersectionObserver(
@@ -58,17 +58,17 @@ function List() {
         },
         { threshold: 0.2 },
       )
-      observer.observe(conutEnd.current)
+      observer.observe(scrollEnd.current)
     }
   }, [isLoading])
 
   return (
     <div>
-      <Search />
+      <Search more={scrollEnd} />
       {isLoading ? (
         <Skeleton />
       ) : (
-        <Pokemons more={loadMore} end={conutEnd} items={pokemons} />
+        <Pokemons countFunc={loadMore} more={scrollEnd} items={pokemons} />
       )}
     </div>
   )

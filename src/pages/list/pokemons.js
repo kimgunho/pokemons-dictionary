@@ -52,7 +52,7 @@ const MoreBtn = styled.button`
   margin: 30px auto 0;
 `
 
-function Pokemons({ items, end, more }) {
+function Pokemons({ items, countFunc, more }) {
   const { setSelectPokemon } = UseUserPokemons()
 
   return (
@@ -77,7 +77,7 @@ function Pokemons({ items, end, more }) {
         ))}
       </Items>
 
-      <MoreBtn ref={end} onClick={more} className="more">
+      <MoreBtn ref={more} onClick={countFunc} className="more">
         more
       </MoreBtn>
     </>

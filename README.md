@@ -37,7 +37,6 @@
 데이터를 next, prev방법보다는 infinity scroll을 이용하여 추가적으로 리스트를 불러오도록 하였으며, 초기 데이터를 불러올시에는 skeleton ui 방안으로 대처하였습니다. <br />
 
 <img src="./Kapture.gif"  width="320">
-
 <hr>
 
 ### 3. 선택된 포켓몬데이터 디테일 전달

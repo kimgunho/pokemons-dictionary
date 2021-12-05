@@ -34,7 +34,8 @@
 **기획** : 포켓몬 api의 url을 fetch를 하는과정에서 json구조가 한번의 json에 모든 데이터가 들어있지 않다보니 모든 데이터를 이끌어 내기위해 도합 3번의 fetch를 해야했다.
 이부분은 마음에 들지않지만 개선의 여지가 어려워보입니다.<br>
 받아온 데이터를 context의 전역 state로 만든후 pokemons 리스트에 렌더링 걸어주었습니다.
-데이터를 next, prev방법보다는 infinity scroll을 이용하여 추가적으로 리스트를 불러오도록 하였으며, 초기 데이터를 불러올시에는 skeleton ui 방안으로 대처하였습니다.
+데이터를 next, prev방법보다는 infinity scroll을 이용하여 추가적으로 리스트를 불러오도록 하였으며, 초기 데이터를 불러올시에는 skeleton ui 방안으로 대처하였습니다. <br />
+
 <img src="./Kapture.gif"  width="320">
 
 <hr>

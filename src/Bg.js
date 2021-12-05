@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import Detail from './pages/detail/detail'
-import List from './pages/list'
-import { UseUserPokemons } from './context/pokemonContext'
+import React from "react";
+import styled from "styled-components";
+import Detail from "./pages/detail/detail";
+import List from "./pages/list";
+import { UseUserPokemons } from "./context/pokemonContext";
 
 const Container = styled.div`
   display: flex;
@@ -15,7 +15,7 @@ const Container = styled.div`
     margin: 2%;
     position: relative;
   }
-`
+`;
 
 const BgUl = styled.ul`
   display: flex;
@@ -36,11 +36,11 @@ const BgUl = styled.ul`
     background-repeat: no-repeat;
     background-position: center center;
   }
-`
+`;
 
 function BgContainer() {
-  const { pokemons, selectedPokemon } = UseUserPokemons()
-  const pokemonBg = pokemons.map(({ img }) => img)
+  const { pokemons, selectedPokemon } = UseUserPokemons();
+  const pokemonBg = pokemons.map(({ img }) => img);
   return (
     <>
       <BgUl color={selectedPokemon.color}>
@@ -58,7 +58,7 @@ function BgContainer() {
         <List />
       </Container>
     </>
-  )
+  );
 }
 
-export default BgContainer
+export default BgContainer;

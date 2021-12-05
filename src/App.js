@@ -1,7 +1,7 @@
-import React from 'react'
-import GlobalStyle from './shared/styles/reset'
-import { UserPokemonProvider } from './context/pokemonContext'
-import BgContainer from './Bg'
+import React from "react";
+import GlobalStyle from "./shared/styles/reset";
+import { UserPokemonProvider } from "./context/pokemonContext";
+import BgContainer from "./Bg";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <GlobalStyle />
       <BgContainer />
     </UserPokemonProvider>
-  )
+  );
 }
 
-export default App
+export default App;

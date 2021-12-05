@@ -2,13 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import { UseUserPokemons } from '../../context/pokemonContext'
 
-const Item = styled.ul`
+const Items = styled.ul`
   display: flex;
   flex-wrap: wrap;
   margin-top: 70px;
 `
-
-const ItemEl = styled.li`
+const Item = styled.li`
   width: 29%;
   margin: 2%;
   padding: 20px;
@@ -28,7 +27,7 @@ const ItemEl = styled.li`
     width: 100%;
     max-width: 100px;
   }
-  p.numbering {
+  p.type {
     text-align: left;
     color: #333;
     span {
@@ -42,7 +41,7 @@ const ItemEl = styled.li`
     }
   }
 `
-const Btn = styled.button`
+const MoreBtn = styled.button`
   border: 0;
   background-color: #333;
   color: #fff;
@@ -53,49 +52,34 @@ const Btn = styled.button`
   margin: 30px auto 0;
 `
 
-function Pokemons({ item, end, more }) {
+function Pokemons({ items, end, more }) {
   const { setSelectPokemon } = UseUserPokemons()
-  const detail = document.querySelector('.detail')
-
-  const handleSelectPokemon = (pokemon) => {
-    rotateDetail()
-    setSelectPokemon(pokemon)
-    if (detail.classList.contains('rotateY')) {
-      setTimeout(() => {
-        detail.classList.remove('rotateY')
-      }, 700)
-    }
-  }
-
-  function rotateDetail() {
-    detail.classList.add('rotateY')
-  }
 
   return (
     <>
-      <Item className="pokemons">
-        {item.map((item, idx) => (
-          <ItemEl
-            key={idx}
+      <Items className="pokemons">
+        {items.map((item, index) => (
+          <Item
+            key={index}
             color={item.color}
             onClick={() => {
-              handleSelectPokemon(item)
+              setSelectPokemon(item)
             }}
           >
-            <p className="numbering">
+            <p className="type">
               <span></span> {item.type}
             </p>
             <img src={item.img} alt={item.name} />
             <h3>
               no.{item.id} {item.name}
             </h3>
-          </ItemEl>
+          </Item>
         ))}
-      </Item>
+      </Items>
 
-      <Btn ref={end} onClick={more} className="more">
+      <MoreBtn ref={end} onClick={more} className="more">
         more
-      </Btn>
+      </MoreBtn>
     </>
   )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { UseUserPokemons } from '../../context/pokemonContext'
 
-const FixDiv = styled.div`
+const FixDetail = styled.div`
   position: relative;
   div {
     position: absolute;
@@ -38,22 +38,8 @@ const FixDiv = styled.div`
       }
     }
   }
-  div.rotateY {
-    @keyframes rotateY {
-      0% {
-        transform: rotateY(0deg);
-      }
-      50% {
-        transform: rotateY(90deg);
-      }
-      100% {
-        transform: rotateY(0deg);
-      }
-    }
-    animation: rotateY 0.2s ease-in;
-  }
 `
-const CircleImg = styled.img`
+const SelectPokemon = styled.img`
   @keyframes imgBackground {
     0% {
       background-position: 0% 50%;
@@ -69,9 +55,9 @@ const CircleImg = styled.img`
   background: linear-gradient(
     137deg,
     #fff6b7,
-    ${({ bgColor }) => bgColor},
+    ${({ backgroundColor }) => backgroundColor},
     #c2ffd8,
-    ${({ bgColor }) => bgColor}
+    ${({ backgroundColor }) => backgroundColor}
   );
   animation: imgBackground 5s ease infinite;
   background-size: 400% 400%;
@@ -81,8 +67,7 @@ const CircleImg = styled.img`
   box-shadow: 3px 3px 10px #ddd;
   border: 1px solid #ddd;
 `
-
-const LikeBtn = styled.button`
+const Like = styled.button`
   border: 0;
   font-size: 1.45em;
   cursor: pointer;
@@ -92,24 +77,25 @@ function Detail() {
   const { selectedPokemon, collectPokemons, setCollectPokemons } =
     UseUserPokemons()
 
-  function handleCollectPokemons(item) {
-    const selectPokemon = collectPokemons.find(({ name }) => item.name === name)
-    // // more.style.display = 'none'
+  function handleCollectPokemons(pokemon) {
+    const selectPokemon = collectPokemons.find(
+      ({ name }) => pokemon.name === name,
+    )
 
     if (!selectPokemon) {
-      setCollectPokemons((acc) => [...acc, item])
+      setCollectPokemons((prev) => [...prev, pokemon])
     } else {
       const filterPokemons = collectPokemons.filter(
-        ({ name }) => name !== item.name,
+        ({ name }) => name !== pokemon.name,
       )
       setCollectPokemons(filterPokemons)
     }
   }
 
   window.addEventListener('scroll', function () {
-    const fixDiv = document.querySelector('.detail')
+    const detail = document.querySelector('.detail')
     const top = window.scrollY
-    fixDiv.style.top = `${top}px`
+    detail.style.top = `${top}px`
   })
 
   function likeText() {
@@ -123,33 +109,33 @@ function Detail() {
   const { color, id, name, img, type, text, genera, height, weight } =
     selectedPokemon
   return (
-    <FixDiv bgColor={color}>
+    <FixDetail backgroundColor={color}>
       <div className="detail">
         <h2>
           <span>{id ? `no.${id}` : ''}</span> {name}
           {id ? (
-            <LikeBtn onClick={() => handleCollectPokemons(selectedPokemon)}>
+            <Like onClick={() => handleCollectPokemons(selectedPokemon)}>
               {likeText()}
-            </LikeBtn>
+            </Like>
           ) : (
             ``
           )}
         </h2>
         <p className="type">{type ? `type : ${type}` : ``}</p>
-        <CircleImg bgColor={color} src={img} alt={name} />
+        <SelectPokemon backgroundColor={color} src={img} alt={name} />
         <p className="text">
           {text}
           <span>
             {genera && height && weight
               ? `            ${genera}  /
-            몸무게 : ${height} Kg /
-            키 : ${weight} cm
+            weight : ${height} Kg /
+            height : ${weight} cm
             `
               : ``}
           </span>
         </p>
       </div>
-    </FixDiv>
+    </FixDetail>
   )
 }
 

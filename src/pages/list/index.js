@@ -68,7 +68,7 @@ function List() {
       {isLoading ? (
         <Skeleton />
       ) : (
-        <Pokemons more={loadMore} end={conutEnd} item={pokemons} />
+        <Pokemons more={loadMore} end={conutEnd} items={pokemons} />
       )}
     </div>
   )

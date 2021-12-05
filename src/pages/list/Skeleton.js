@@ -1,13 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const SkeletonUl = styled.ul`
+const SkeletonBody = styled.ul`
   display: flex;
   flex-wrap: wrap;
   padding-top: 70px;
 `
 
-const ItemEl = styled.li`
+const Element = styled.li`
   @keyframes backgroundAnimation {
     0% {
       background-color: #ddd;
@@ -62,23 +62,11 @@ const ItemEl = styled.li`
 const Skeleton = () => {
   return (
     <>
-      <SkeletonUl className="pokemons">
-        <ItemEl></ItemEl>
-        <ItemEl></ItemEl>
-        <ItemEl></ItemEl>
-        <ItemEl></ItemEl>
-        <ItemEl></ItemEl>
-        <ItemEl></ItemEl>
-        <ItemEl></ItemEl>
-        <ItemEl></ItemEl>
-        <ItemEl></ItemEl>
-        <ItemEl></ItemEl>
-        <ItemEl></ItemEl>
-        <ItemEl></ItemEl>
-        <ItemEl></ItemEl>
-        <ItemEl></ItemEl>
-        <ItemEl></ItemEl>
-      </SkeletonUl>
+      <SkeletonBody className="skeleton">
+        {Array.from(Array(9)).map((index) => (
+          <Element key={index} />
+        ))}
+      </SkeletonBody>
     </>
   )
 }

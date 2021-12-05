@@ -2,13 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 import { UseUserPokemons } from '../../context/pokemonContext'
 
-const LikeUl = styled.ul`
+const Nav = styled.ul`
   display: flex;
   width: 50%;
   align-items: center;
 `
-const LikeLi = styled.li`
-  background-color: ${({ bgColor }) => bgColor};
+const NavItem = styled.li`
+  background-color: ${({ backgroundColor }) => backgroundColor};
   text-align: center;
   font-size: 1.125em;
   white-space: nowrap;
@@ -36,14 +36,14 @@ function Like() {
   }
 
   return (
-    <LikeUl>
-      <LikeLi bgColor={'#ddd'} onClick={handleCollectRender}>
+    <Nav>
+      <NavItem backgroundColor={'#ddd'} onClick={handleCollectRender}>
         나의 포켓몬
-      </LikeLi>
-      <LikeLi bgColor={'#ddd'} onClick={handlePokemons}>
+      </NavItem>
+      <NavItem backgroundColor={'#ddd'} onClick={handlePokemons}>
         초기화
-      </LikeLi>
-    </LikeUl>
+      </NavItem>
+    </Nav>
   )
 }
 

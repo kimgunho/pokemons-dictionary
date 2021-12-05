@@ -11,7 +11,7 @@ const SearchForm = styled.form`
   right: 0;
   top: 0;
 `
-const SearchAticle = styled.div`
+const Inner = styled.div`
   width: 50%;
   display: flex;
   input {
@@ -48,27 +48,27 @@ const Modal = styled.div`
 function Search() {
   const { pokemons, setPokemons, setCount } = UseUserPokemons()
   const more = document.querySelector('.more')
-  const searchId = document.getElementById('search-id')
-  const modalAlert = document.querySelector('.modal-alert')
+  const search = document.getElementById('search')
+  const alert = document.querySelector('.alert')
 
-  async function onSearch(e) {
-    e.preventDefault()
-    const searchPokemon = pokemons.filter(({ name }) => name === searchId.value)
+  async function onSearch(event) {
+    event.preventDefault()
+    const searchPokemon = pokemons.filter(({ name }) => name === search.value)
     if (searchPokemon) {
       setPokemons(searchPokemon)
       more.style.display = 'none'
     }
     if (searchPokemon.length === 0) {
-      modalAlert.style.display = 'block'
+      alert.style.display = 'block'
     }
   }
 
-  function onPokemonReset(e) {
+  function handlePokemonReset(event) {
     const {
       target: { value },
-    } = e
+    } = event
     if (value === '') {
-      modalAlert.style.display = 'none'
+      alert.style.display = 'none'
       more.style.display = 'block'
       setCount(9)
     }
@@ -77,13 +77,13 @@ function Search() {
   return (
     <>
       <SearchForm>
-        <SearchAticle className="search-article">
-          <input onChange={onPokemonReset} id="search-id" type="text"></input>
+        <Inner className="inner">
+          <input onChange={handlePokemonReset} id="search" type="text"></input>
           <button onClick={onSearch}>검색</button>
-        </SearchAticle>
+        </Inner>
         <Like />
       </SearchForm>
-      <Modal className="modal-alert">
+      <Modal className="alert">
         <p>검색하신 결과는 존재하지 않습니다 :(</p>
       </Modal>
     </>

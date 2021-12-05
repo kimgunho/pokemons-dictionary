@@ -1,8 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-import Detail from "./pages/detail/detail";
-import List from "./pages/list";
-import { UseUserPokemons } from "./context/pokemonContext";
+import React from 'react'
+import styled from 'styled-components'
+import Detail from './pages/detail/detail'
+import List from './pages/list'
+import { UseUserPokemons } from './context/pokemonContext'
 
 const Container = styled.div`
   display: flex;
@@ -15,9 +15,9 @@ const Container = styled.div`
     margin: 2%;
     position: relative;
   }
-`;
+`
 
-const BgUl = styled.ul`
+const WrapperBackground = styled.ul`
   display: flex;
   flex-wrap: wrap;
   transition: all 0.3s ease-in;
@@ -36,29 +36,31 @@ const BgUl = styled.ul`
     background-repeat: no-repeat;
     background-position: center center;
   }
-`;
+`
 
-function BgContainer() {
-  const { pokemons, selectedPokemon } = UseUserPokemons();
-  const pokemonBg = pokemons.map(({ img }) => img);
+function Wrapper() {
+  const { pokemons, selectedPokemon } = UseUserPokemons()
+  const wrapperBackground = pokemons.map(({ img }) => img)
   return (
     <>
-      <BgUl color={selectedPokemon.color}>
-        {pokemonBg.map((item, i) => (
+      {/* 포켓몬 리스트 스타일 와퍼 백그라운드  */}
+      <WrapperBackground color={selectedPokemon.color}>
+        {wrapperBackground.map((pokemon, index) => (
           <li
-            key={i}
+            key={index}
             style={{
-              backgroundImage: `url(${item})`,
+              backgroundImage: `url(${pokemon})`,
             }}
           ></li>
         ))}
-      </BgUl>
-      <Container className="App">
+      </WrapperBackground>
+
+      <Container>
         <Detail />
         <List />
       </Container>
     </>
-  );
+  )
 }
 
-export default BgContainer;
+export default Wrapper

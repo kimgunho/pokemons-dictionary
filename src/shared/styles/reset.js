@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
         height:100%;
     }
     body{
-        /* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap'); */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap');
         padding:0;
         margin:0;
         font-family: 'Noto Sans', sans-serif;
